@@ -11,10 +11,10 @@ public class Solution {
         
         //2nd approach
         //convert to string remove 0's and just return the length of the string
-        return Integer.toBinaryString(n).replaceAll("0","").length();
+        //return Integer.toBinaryString(n).replaceAll("0","").length();
         
         //3rd approach
         //Use bitCount method  
-        //return Integer.bitCount(n);  
+        return Integer.bitCount(n);  
     }
 }
