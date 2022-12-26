@@ -30,7 +30,7 @@ class Solution{
         // code here
         long ans=0L;
 
-        //BRUTE FORCE APPROACH
+        //BRUTE FORCE APPROACH TC: O(n^2)
         // for(int i =1; i<=N; i++){
         //     for(int j=1; j<=i; j++){
         //         if(i%j == 0){
@@ -41,7 +41,7 @@ class Solution{
         // return ans;
         
         
-        //OPTIMIZED APPROACH
+        //OPTIMIZED APPROACH TC: O(n sqrt(n))
         // for(int i =1; i<=N; i++){
         //     for(int j =1; j<=(int)Math.sqrt(i);j++){
         //         if(i%j==0){
@@ -58,7 +58,7 @@ class Solution{
         // }
         // return ans;
         
-        //
+        //OPTIMIZED APPROACH TC: O(n)
         for (int i = 1; i <= N; ++i)
             ans += (N / i) * i;
         return ans;
