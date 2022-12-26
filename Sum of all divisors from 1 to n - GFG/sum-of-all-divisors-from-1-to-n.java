@@ -62,5 +62,15 @@ class Solution{
         for (int i = 1; i <= N; ++i)
             ans += (N / i) * i;
         return ans;
+        
+        //OPTIMIZED APPROACH TC: O(sqrt(n))
+        // for (int i = 1; i <= Math.sqrt(N); i++) {
+        //     // adding i every time it appears with numbers greater than or equal to itself
+        //     int t1 = i * (N / i - i + 1); 
+        //     // adding numbers that appear with i and are greater than i
+        //     int t2 = (((N / i) * (N / i + 1)) / 2) - ((i * (i + 1)) / 2);
+        //     ans += t1 + t2;
+        // }
+        // return ans;
     }
 }
