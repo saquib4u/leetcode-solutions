@@ -34,6 +34,7 @@ public class Main {
 
 class Solution {
     void pushZerosToEnd(int[] arr, int n) {
+        //1st approach
         // code here
         // int temp[]=new int[n];
         // int k = 0;
@@ -50,15 +51,42 @@ class Solution {
         // for(int i = 0; i<n; i++){
         //     arr[i]=temp[i];
         // }
+       
         
-        int count = 0;
-        for(int i = 0; i<n; i++){
-            if(arr[i]!=0){
-                arr[count++]=arr[i];
+        //2nd approach
+        // int count = 0;
+        // for(int i = 0; i<n; i++){
+        //     if(arr[i]!=0){
+        //         arr[count++]=arr[i];
+        //     }
+        // }
+        // while(count<n){
+        //     arr[count++]=0;
+        // }
+        
+        
+        //3rd approach
+        int k = 0;
+        for(k=0; k<arr.length; k++){
+            if(arr[k] == 0){
+                break;
             }
         }
-        while(count<n){
-            arr[count++]=0;
+    
+        //finding zeros and immediate non-zero elements and swapping them
+        int i = k, j = k + 1;
+    
+        while (i < arr.length && j < arr.length) {
+          if (arr[j] != 0) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+    
+          }
+    
+          j++;
+    
         }
     }
 }
