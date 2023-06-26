@@ -49,39 +49,27 @@ class Main
 
 //arr1,arr2 : the arrays
 // n, m: size of arrays
-class Solution
-{
-    //Function to return a list containing the union of the two arrays.
-    public static ArrayList<Integer> findUnion(int arr1[], int arr2[], int n, int m)
-    {
-        // add your code here
-        int i = 0, j = 0;
-      ArrayList<Integer > Union=new ArrayList<>();
-      while (i < n && j < m) {
-        if (arr1[i] <= arr2[j]){
-          if (Union.size() == 0 || Union.get(Union.size()-1) != arr1[i])
-            Union.add(arr1[i]);
-          i++;
-        } 
-        else{
-          if (Union.size() == 0 || Union.get(Union.size()-1) != arr2[j])
-            Union.add(arr2[j]);
-          j++;
+class Solution {
+    public static ArrayList<Integer> findUnion(int arr1[], int arr2[], int n, int m) {
+        TreeSet<Integer> set = new TreeSet<>();
+        ArrayList<Integer> union = new ArrayList<>();
+
+        // Add elements from arr1 to the set
+        for (int i = 0; i < n; i++) {
+            set.add(arr1[i]);
         }
-      }
-      while (i < n) // IF any element left in arr1
-      {
-        if (Union.get(Union.size()-1) != arr1[i])
-          Union.add(arr1[i]);
-        i++;
-      }
-      while (j < m) // If any elements left in arr2
-      {
-        if (Union.get(Union.size()-1) != arr2[j])
-          Union.add(arr2[j]);
-        j++;
-      }
-      return Union;
+
+        // Add elements from arr2 to the set
+        for (int i = 0; i < m; i++) {
+            set.add(arr2[i]);
+        }
+
+        // Add elements from the set to the union list
+        for (int num : set) {
+            union.add(num);
+        }
+
+        return union;
     }
 }
 
