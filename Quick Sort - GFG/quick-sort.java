@@ -47,15 +47,11 @@ class Solution
         int pivot = arr[high];
         int i = low;
         int j = low;
-        
-        while(i<=high){
+        while(i <= high){
             if(arr[i] <= pivot){
-                
-                //swap
                 int temp = arr[i];
                 arr[i] = arr[j];
-                arr[j]=temp;
-                
+                arr[j] = temp;
                 i++;
                 j++;
             }
