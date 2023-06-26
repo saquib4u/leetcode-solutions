@@ -55,102 +55,76 @@ class Merge_Sort
 // } Driver Code Ends
 
 
-class Solution
-{
-    // void merge(int arr[], int l, int mid, int r){
-    //      int i = 0;
-    //      int j = 0;
-    //      int k = 0;
-    //      int temp[] = new int[10000];
-         
-    //      while(i <= mid && j <= r){
-    //          if(arr[i] < arr[j]){
-    //              temp[k++]=arr[i++];
-    //          }
-    //          else{
-    //              temp[k++] = arr[j++];
-    //          }
-    //      }
-         
-    //      for(; i<= mid; i++){
-    //          temp[k++]=arr[i];
-    //      }
-    //      for(; j<= r; j++){
-    //          temp[k++] = arr[j];
-    //      }
+// class Solution {
+//     void merge(int arr[], int l, int mid, int r) {
+//         int i = l, j = mid+1, k = 0;
+//         int temp[] = new int[1000];
         
-    //      for(k=0; k<=r; k++){
-    //          arr[k] = temp[k];
-    //      }
-         
-    // }
-    // void mergeSort(int arr[], int l, int r){
+//         while (i <= mid && j <= r) {
+//             if (arr[i] < arr[j]) {
+//                 temp[k++] = arr[i++];
+//             } else {
+//                 temp[k++] = arr[j++];
+//             }
+//         }
         
-    //     if(l<r){
-    //         int mid = (l + r)/2;
-    //         mergeSort(arr, l, mid);
-    //         mergeSort(arr, mid+1, r);
-    //         merge(arr, l, mid, r);
-    //     }
-    // }
-    
-    
-    void merge(int arr[], int l, int m, int r){
-        int n1 = m - l + 1;
-        int n2 = r - m;
- 
-        /* Create temp arrays */
-        int L[] = new int[n1];
-        int R[] = new int[n2];
- 
-        /*Copy data to temp arrays*/
-        for (int i = 0; i < n1; ++i)
-            L[i] = arr[l + i];
-        for (int j = 0; j < n2; ++j)
-            R[j] = arr[m + 1 + j];
- 
-        /* Merge the temp arrays */
- 
-        // Initial indexes of first and second subarrays
-        int i = 0, j = 0;
- 
-        // Initial index of merged subarray array
-        int k = l;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
-                i++;
+//       while (i <= mid) {
+//             temp[k++] = arr[i++];
+//         }
+
+//         while (j <= r) {
+//             temp[k++] = arr[j++];
+//         }
+        
+//         // Copy elements from temp array back to the original array
+//         for (k = 0; k <= r; k++) {
+//             arr[k] = temp[k];
+//         }
+//     }
+
+//     void mergeSort(int arr[], int l, int r) {
+//         if (l < r) {
+//             int mid = (l + r) / 2;
+//             mergeSort(arr, l, mid);
+//             mergeSort(arr, mid + 1, r);
+//             merge(arr, l, mid, r);
+//         }
+//     }
+// }
+class Solution {
+    void merge(int arr[], int l, int mid, int r) {
+        int i = l;
+        int j = mid + 1;
+        int k = 0;
+        int temp[] = new int[r - l + 1];
+
+        while (i <= mid && j <= r) {
+            if (arr[i] <= arr[j]) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
             }
-            else {
-                arr[k] = R[j];
-                j++;
-            }
-            k++;
         }
- 
-        /* Copy remaining elements of L[] if any */
-        while (i < n1) {
-            arr[k] = L[i];
-            i++;
-            k++;
+
+        while (i <= mid) {
+            temp[k++] = arr[i++];
         }
- 
-        /* Copy remaining elements of R[] if any */
-        while (j < n2) {
-            arr[k] = R[j];
-            j++;
-            k++;
+
+        while (j <= r) {
+            temp[k++] = arr[j++];
+        }
+
+        for (k = 0; k < temp.length; k++) {
+            arr[l + k] = temp[k];
         }
     }
-    
-    void mergeSort(int arr[], int l, int r){
-        
-        if(l<r){
-            int m = (l + r)/2;
-            mergeSort(arr, l, m);
-            mergeSort(arr, m+1, r);
-            merge(arr, l, m, r);
+
+    void mergeSort(int arr[], int l, int r) {
+        if (l < r) {
+            int mid = (l + r) / 2;
+            mergeSort(arr, l, mid);
+            mergeSort(arr, mid + 1, r);
+            merge(arr, l, mid, r);
         }
     }
-    
 }
